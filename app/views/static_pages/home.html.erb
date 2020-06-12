@@ -1,0 +1,45 @@
+<% provide(:title, "Home") %>
+<div class="row">
+    <aside class="col-md-3">
+        <p class = "businessTime">Business time</p>
+        <p class = "businessOvertime">Business overtime</p>
+        <p class = "personTime">Person time</p>
+        <p class = "sleepingTime">Sleeping time</p>
+    </aside>
+    <div class="col-md-6">
+    <h1>Clock+</h1>
+    <p>
+    Click+ build by Yuhao Liu-s3653114@student.rmit.edu.au-Credit LEVEL-Tue Tute 6:30-8:30pm - Amir Homayoon Ashrafzadeh
+    </p>
+    
+    <% @timezones.each do |timezone| %>
+        <ol class="times">
+        <li id="<%= timezone.id %>">
+        <h3><%= timezone.city %><span class="right2"><%= timezone.time%></span></h3>
+        <span><%= timezone.offset %>h</span>
+        <span class="right2"><%= timezone.day %>
+          <% if timezone.mode == "Business time" %>
+            <span class = "businessTime"><%= timezone.mode %></span>
+          <% elsif timezone.mode == "Business overtime" %>
+            <span class = "businessTime"><%= timezone.mode %></span>
+          <% elsif timezone.mode == "Person time" %>
+            <span class = "personTime"><%= timezone.mode %></span>
+          <% else %>
+            <span class = "sleepingTime"><%= timezone.mode %></span>
+          <% end %>
+        </span>
+        </li>
+        </ol>
+    <% end %>
+
+    </div>
+
+    <aside class="col-md-3">
+    <% if $status == 1 %>
+    <%= button_to '24-Hour Clock', static_pages_changeState_path, method: :post, class: "personTime"%>
+    <% else %>
+    <%= button_to '24-Hour Clock', static_pages_changeState_path, method: :post, class: "select" %>
+    <% end %>
+    </aside>
+
+</div>
