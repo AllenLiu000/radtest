@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Timezone.create!(city:  "Melbourne", offset: 0)
+
+Timezone.create!(city:  "San Francisco", offset: -17)
+
+Timezone.create!(city:  "Tokyo", offset: -1)
